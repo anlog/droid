@@ -1,0 +1,60 @@
+#!/system/bin/sh
+# Fake carrier for ROMs with init.d support
+# To disable, touch /etc/no_fix_sim
+
+if [ -e /etc/no_fix_sim ]; then
+    exit 0
+fi
+
+setenforce permissive
+
+#We will proceed if either
+#1. gsm.sim.state has a READY value
+#2. 100s timeout ( this would happen if we are booting without sim card )
+loop_cnt=6
+
+for i in `seq $loop_cnt`
+do
+    sleep 10;
+    state=`getprop gsm.sim.state`
+
+    if [ -n $state ] && [ $state = "READY,READY" ] ; then
+        echo "SIM is ready";
+        num=`getprop fix.sim.debug`
+        if [ -z $num ] ; then
+            #We have not initialized this variable before
+            setprop fix.sim.debug 1
+        fi
+
+        num=$(( $num + 1 ))
+        setprop fix.sim.debug $num
+
+        #wait for sometime to waive the potential glitch
+        sleep 5
+        #Now do the fixing
+        setprop gsm.sim.operator.alpha "Verizon,AT&T"
+        setprop gsm.sim.operator.iso-country "us,us"
+        setprop gsm.sim.operator.numeric "310004,310080"
+        break;
+    fi
+
+    if [ -n "$state" ] && [ "$state" = "READY" ] ; then
+        echo "SIM is ready";
+        num=`getprop fix.sim.debug`
+        if [ -z "$num" ] ; then
+            setprop fix.sim.debug 1
+        fi
+        #
+        num=$(( $num + 1 ))
+        setprop fix.sim.debug $num
+        #wait for sometime to waive the potential glitch
+        sleep 5
+        #Now do the fixing
+        setprop gsm.sim.operator.alpha          "Verizon"
+        setprop gsm.sim.operator.iso-country    "us"
+        setprop gsm.sim.operator.numeric        "310004"
+        break;
+    fi
+done
+
+setenforce enforcing
