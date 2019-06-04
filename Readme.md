@@ -20,3 +20,12 @@ def getVersionCode() {
     return versionSplite[0].toInteger() * 100000 + versionSplite[1].toInteger()
 }
 ```
+
+## app: use libs in rootProject
+
+    repositories {
+
+        flatDir {
+            dirs '../libs'
+        }
+    }
