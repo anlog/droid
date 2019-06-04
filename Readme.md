@@ -56,3 +56,21 @@ preBuild {
     }
 }
 ```
+## droid: print only package_name logcat
+```
+function alog() {
+    package=${1:-system_server}
+    while true
+    do
+        pid=$(adb shell pidof $package)
+        # pid=$(adb shell ps -ef |grep $package | awk -F ' ' '{print $2}' | head -1)
+        if [ -n "$pid" ]; then
+            break;
+        else
+            sleep 0.5
+        fi
+    done
+
+    adb logcat -v threadtime -v color --pid=${pid}
+}
+```
