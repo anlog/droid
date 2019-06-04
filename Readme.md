@@ -21,7 +21,7 @@ def getVersionCode() {
 }
 ```
 
-## app: use libs in rootProject
+## app: use libs in rootProject gradle
 
     repositories {
 
@@ -29,3 +29,30 @@ def getVersionCode() {
             dirs '../libs'
         }
     }
+ 
+## app: compileOnly framework in gradle
+
+```
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly(name: 'framework')
+}
+```
+```
+preBuild {
+    doLast {
+        def imlFile = file(project.name + ".iml")
+        println 'Change ' + project.name + '.iml order'
+        try {
+            def parsedXml = (new XmlParser()).parse(imlFile)
+            def jdkNode = parsedXml.component[1].orderEntry.find { it.'@type' == 'jdk' }
+            parsedXml.component[1].remove(jdkNode)
+            def sdkString = "Android API " + android.compileSdkVersion.substring("android-".length()) + " Platform"
+            new Node(parsedXml.component[1], 'orderEntry', ['type': 'jdk', 'jdkName': sdkString, 'jdkType': 'Android SDK'])
+            groovy.xml.XmlUtil.serialize(parsedXml, new FileOutputStream(imlFile))
+        } catch (FileNotFoundException e) {
+            // nop, iml not found
+        }
+    }
+}
+```
