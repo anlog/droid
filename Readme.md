@@ -75,7 +75,6 @@ function alog() {
 }
 ```
 ## droid: using fastboot to update system
-
 ```
 fastboot flash boot boot.img
 fastboot flash aboot emmc_appsboot.mbn
@@ -83,3 +82,8 @@ fastboot flash system system.img
 fastboot flash userdata userdata.img
 fastboot flash vendor vendor.img
 ```
+## droid: qdl Qcom 9008 edl download
+
+> https://www.96boards.org/documentation/consumer/guides/qdl.md.html
+
+`qdl --debug --storage emmc ./prog_emmc_firehose_8996_ddr.elf rawprogram_unsparse.xml patch0.xml`
