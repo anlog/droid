@@ -74,3 +74,12 @@ function alog() {
     adb logcat -v threadtime -v color --pid=${pid}
 }
 ```
+## droid: using fastboot to update system
+
+```
+fastboot flash boot boot.img
+fastboot flash aboot emmc_appsboot.mbn
+fastboot flash system system.img
+fastboot flash userdata userdata.img
+fastboot flash vendor vendor.img
+```
