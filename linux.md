@@ -22,4 +22,8 @@ systemctl daemon-reload # reload systemd
 systemctl is-enabled autossh && echo "autossh is already enabled." || systemctl enable autossh
 systemctl start autossh
 ```
+## [removing-colors-from-output](https://stackoverflow.com/questions/17998978/removing-colors-from-output)
+
+#### For Mac OSX or BSD use
+`sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'`
 
