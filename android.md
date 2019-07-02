@@ -87,3 +87,8 @@ fastboot flash vendor vendor.img
 > https://www.96boards.org/documentation/consumer/guides/qdl.md.html
 
 `qdl --debug --storage emmc ./prog_emmc_firehose_8996_ddr.elf rawprogram_unsparse.xml patch0.xml`
+
+## aapt dump badging apk version
+
+`~/Library/Android/sdk/build-tools/28.0.3/aapt dump badging *.apk |grep version`
+
