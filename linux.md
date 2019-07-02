@@ -27,3 +27,14 @@ systemctl start autossh
 #### For Mac OSX or BSD use
 `sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'`
 
+
+## git log history
+
+```
+# 查看 presentation/src/main/java/com/chehejia/car/btphone/PhoneActivity.java 290-300行的所有代码提交修改历史记录
+git log --oneline -L290,300:presentation/src/main/java/com/chehejia/car/btphone/PhoneActivity.java
+# 查看提交中包含文件presentation/src/main/java/com/chehejia/car/btphone/PhoneActivity.java内容改动中 含有onCallLogsLoading的
+git log   -G "onCallLogsLoading" presentation/src/main/java/com/chehejia/car/btphone/PhoneActivity.java
+# 查看提交中包含文件内容改动中 含有onCallLogsLoading的
+git log   -G "onCallLogsLoading"
+```
