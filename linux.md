@@ -38,3 +38,11 @@ git log   -G "onCallLogsLoading" presentation/src/main/java/com/chehejia/car/btp
 # 查看提交中包含文件内容改动中 含有onCallLogsLoading的
 git log   -G "onCallLogsLoading"
 ```
+
+## git show ignores
+
+```
+git status --ignored
+git clean -ndX
+find . -path ./.git -prune -o -print | git check-ignore --no-index --stdin --verbose
+```
