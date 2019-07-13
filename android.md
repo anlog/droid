@@ -92,3 +92,6 @@ fastboot flash vendor vendor.img
 
 `~/Library/Android/sdk/build-tools/28.0.3/aapt dump badging *.apk |grep version`
 
+## Android get imei
+
+`service call iphonesubinfo 1 | toybox cut -d "'" -f2 | toybox grep -Eo '[0-9]' | toybox xargs | toybox sed 's/\ //g'`
