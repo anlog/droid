@@ -95,3 +95,7 @@ fastboot flash vendor vendor.img
 ## Android get imei
 
 `service call iphonesubinfo 1 | toybox cut -d "'" -f2 | toybox grep -Eo '[0-9]' | toybox xargs | toybox sed 's/\ //g'`
+
+## Android get route table
+
+`ip route list match 0 table all scope global`
