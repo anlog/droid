@@ -99,3 +99,8 @@ fastboot flash vendor vendor.img
 ## Android get route table
 
 `ip route list match 0 table all scope global`
+
+## Android get default route
+```
+for a in $(ip rule show | grep lookup | sed -r 's/.* lookup ([^ ]+).*/\1/'); do ip route show table $a | grep ^default | cut -d ' ' -f 2-5; done | head -1
+```
