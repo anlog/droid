@@ -104,3 +104,8 @@ fastboot flash vendor vendor.img
 ```
 for a in $(ip rule show | grep lookup | sed -r 's/.* lookup ([^ ]+).*/\1/'); do ip route show table $a | grep ^default | cut -d ' ' -f 2-5; done | head -1
 ```
+
+## Android NDK cmake
+```
+cmake -S. -Bout -DCMAKE_BUILD_TYPE=Debug -DANDROID_ABI=arm64-v8a -DANDROID_NDK=/Users/dp/Library/Android/sdk/ndk-bundle -DCMAKE_BUILD_TYPE=Debug -GNinja -DCMAKE_TOOLCHAIN_FILE=/Users/dp/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=/usr/local/bin/ninja -DANDROID_NATIVE_API_LEVEL=23 -DCMAKE_C_FLAGS= -DCMAKE_CXX_FLAGS= -DANDROID_TOOLCHAIN=clang
+```
