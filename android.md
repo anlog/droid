@@ -116,3 +116,7 @@ cmake -S. -Bout -DCMAKE_BUILD_TYPE=Debug -DANDROID_ABI=arm64-v8a -DANDROID_NDK=/
 rm -rf tmp.img && for i in $(seq 1 $(ls -Al system_*.img | wc -l)); do cat system_${i}.img >> tmp.img ; done
 rm -rf tmp.img && for i in $(seq 1 $(ls -Al vendor_*.img | wc -l)); do cat vendor_${i}.img >> tmp.img ; done
 ```
+
+## aosp ninja tool
+
+`./prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-M01_AE.ninja -t list`
