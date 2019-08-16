@@ -109,3 +109,10 @@ for a in $(ip rule show | grep lookup | sed -r 's/.* lookup ([^ ]+).*/\1/'); do 
 ```
 cmake -S. -Bout -DCMAKE_BUILD_TYPE=Debug -DANDROID_ABI=arm64-v8a -DANDROID_NDK=/Users/dp/Library/Android/sdk/ndk-bundle -DCMAKE_BUILD_TYPE=Debug -GNinja -DCMAKE_TOOLCHAIN_FILE=/Users/dp/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=/usr/local/bin/ninja -DANDROID_NATIVE_API_LEVEL=23 -DCMAKE_C_FLAGS= -DCMAKE_CXX_FLAGS= -DANDROID_TOOLCHAIN=clang
 ```
+
+## Android qdl images to one
+
+```
+rm -rf tmp.img && for i in $(seq 1 $(ls -Al system_*.img | wc -l)); do cat system_${i}.img >> tmp.img ; done
+rm -rf tmp.img && for i in $(seq 1 $(ls -Al vendor_*.img | wc -l)); do cat vendor_${i}.img >> tmp.img ; done
+```
