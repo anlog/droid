@@ -120,3 +120,9 @@ rm -rf tmp.img && for i in $(seq 1 $(ls -Al vendor_*.img | wc -l)); do cat vendo
 ## aosp ninja tool
 
 `./prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-M01_AE.ninja -t list`
+
+## Android check settings
+
+```
+adb shell dumpsys settings | grep device_provisioned
+```
