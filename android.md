@@ -126,3 +126,21 @@ rm -rf tmp.img && for i in $(seq 1 $(ls -Al vendor_*.img | wc -l)); do cat vendo
 ```
 adb shell dumpsys settings | grep device_provisioned
 ```
+
+## android dalvik
+
+> android/Hello.java
+```
+javac Hello.java
+java Hello
+
+dx --dex --output=hello.dex Hello.class
+adb push hello.dex /cache
+dalvikvm -cp /cache/hello.dex Hello
+art -cp /cache/hello.dex Hello
+
+dexdump -d hello.dex
+
+baksmail d hello.dex
+smail a -o a.dex out
+```
