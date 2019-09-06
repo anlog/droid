@@ -138,9 +138,18 @@ dx --dex --output=hello.dex Hello.class
 adb push hello.dex /cache
 dalvikvm -cp /cache/hello.dex Hello
 art -cp /cache/hello.dex Hello
+CLASSPATH=/cache/hello.dex exec app_process /system/bin Hello
 
 dexdump -d hello.dex
 
 baksmail d hello.dex
 smail a -o a.dex out
+```
+
+## android br->data->img
+
+```
+~/code/dipper/out/soong/host/linux-x86/bin/brotli  -d vendor.new.dat.br -o vendor.new.dat
+python sdat2img.py system.transfer.list system.new.dat system.img
+python sdat2img.py vendor.transfer.list vendor.new.dat  vendor.img
 ```
