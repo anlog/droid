@@ -153,3 +153,30 @@ smail a -o a.dex out
 python sdat2img.py system.transfer.list system.new.dat system.img
 python sdat2img.py vendor.transfer.list vendor.new.dat  vendor.img
 ```
+
+# android skia build
+
+```
+git clone https://skia.googlesource.com/skia.git
+# or
+# fetch skia
+cd skia
+python2 tools/git-sync-deps
+
+# for arm64 build
+bin/gn gen out/arm64 --args='ndk="/home/dp/Android/Sdk/ndk-bundle" target_cpu="arm64" target_os="android" is_official_build=true is_component_build=true is_debug=false skia_use_system_expat=false  skia_use_system_freetype2=false skia_use_system_libpng=false skia_use_icu=false skia_use_libjpeg_turbo=false skia_use_libwebp=false skia_use_piex=false'
+
+ninja -C out/arm64
+# use nm to find undefined symbol
+nm -u out/arm64/libskia.so
+
+# strip unused code
+~/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-strip --strip-unneeded out/arm64/libskia.so
+
+# for arm build
+bin/gn gen out/arm --args='ndk_api=21 ndk="/home/dp/Android/Sdk/ndk-bundle" target_cpu="arm" target_os="android" is_official_build=true is_component_build=true is_debug=false skia_use_system_expat=false  skia_use_system_freetype2=false skia_use_system_libpng=false skia_use_icu=false skia_use_libjpeg_turbo=false skia_use_libwebp=false skia_use_piex=false'
+
+ninja -C out/arm
+# strip unused code
+~/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-strip --strip-unneeded out/arm/libskia.so
+```
