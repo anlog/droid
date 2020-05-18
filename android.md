@@ -180,3 +180,16 @@ ninja -C out/arm
 # strip unused code
 ~/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-strip --strip-unneeded out/arm/libskia.so
 ```
+# proguard common issues
+
+```
+混淆常见错误; 目前遇到了2种:
+1. 主动调用的方法
+不能用反射, 因为经过混淆后的代码, 你不能确定方法名(包括类名,变量等)不变, 会导致 MethodNotFoundException
+2. use-library 添加的 callback 实现类 不能混淆
+如果是静态引入的sdk 这样的混淆没问题; 但是使用use-library 的动态库; 回调时load 进来的class 执行 mCallBack.onXXX(); 方法时
+你在本地代码实现的 CallBack 实现类 的方法被混淆了, 导致出错;  会导致 AbstraceMethodError
+
+-keep class * implements com.example.*
+```
+
