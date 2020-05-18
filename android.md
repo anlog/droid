@@ -193,3 +193,9 @@ ninja -C out/arm
 -keep class * implements com.example.*
 ```
 
+# aosp manifest merger cli
+
+```
+java -classpath prebuilts/devtools/tools/lib/manifest-merger.jar com.android.manifmerger.Main merge --main main/AndroidManifest.xml --libs libs/AndroidManifest.xml  -o  /tmp/merger.xml
+```
+
