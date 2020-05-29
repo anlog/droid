@@ -199,3 +199,4 @@ ninja -C out/arm
 java -classpath prebuilts/devtools/tools/lib/manifest-merger.jar com.android.manifmerger.Main merge --main main/AndroidManifest.xml --libs libs/AndroidManifest.xml  -o  /tmp/merger.xml
 ```
 
+# Qcom Boot Process [https://lineageos.org/engineering/Qualcomm-Firmware/](https://lineageos.org/engineering/Qualcomm-Firmware/)
