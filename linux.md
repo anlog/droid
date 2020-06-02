@@ -50,6 +50,7 @@ find . -path ./.git -prune -o -print | git check-ignore --no-index --stdin --ver
 ## socat nat
 
 `socat tcp-listen:234,bind=0.0.0.0,reuseaddr,fork tcp:172.17.0.8:8000`
+`socat -d -d  tcp-listen:5555,bind=127.0.0.1,reuseaddr,fork exec:'ssh linux "socat STDIO tcp:127.0.0.1:5555"'`
 
 ## zsh_local
 
