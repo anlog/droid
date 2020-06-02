@@ -1,0 +1,7 @@
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PATH=$PATH:/Users/dp/Library/Android/sdk/cmdline-tools/latest/tools/bin
+export PATH=$PATH:/Users/dp/Library/Android/sdk/build-tools/29.0.3
+
+[ -f ~/.zsh_func ] && source ~/.zsh_func

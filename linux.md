@@ -50,3 +50,9 @@ find . -path ./.git -prune -o -print | git check-ignore --no-index --stdin --ver
 ## socat nat
 
 `socat tcp-listen:234,bind=0.0.0.0,reuseaddr,fork tcp:172.17.0.8:8000`
+
+## zsh_local
+
+```
+cd linux && ln -s $PWD/.* ~ && echo "[ -f ~/.zsh_local ] && source ~/.zsh_local" >> ~/.zshrc
+```

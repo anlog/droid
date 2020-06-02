@@ -1,0 +1,136 @@
+function aroot() {
+    adb root
+    adb remount
+}
+
+function ashell(){
+    adb root && adb shell
+}
+
+function aphone() {
+    adb shell am start -n "com.chehejia.car.btphone/com.chehejia.car.btphone.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+}
+
+function apid() {
+    local prepend=''
+    local append=''
+    if [ "$1" = "--exact" ]; then
+        prepend=' '
+        append='$'
+        shift
+    elif [ "$1" = "--help" -o "$1" = "-h" ]; then
+        echo "usage: qpid [[--exact] <process name|pid>"
+        return 255
+    fi
+
+    local EXE="$1"
+    if [ "$EXE" ] ; then
+        qpid | \grep "$prepend$EXE$append"
+    else
+        adb shell ps \
+            | tr -d '\r' \
+            | sed -e 1d -e 's/^[^ ]* *\([0-9]*\).* \([^ ]*\)$/\1 \2/'
+    fi
+}
+
+function alogcat() {
+    #adb shell killall logd logcat
+    #local commands
+    #local pids
+    #for i in $@
+    #do
+    #local txt=$(adb shell ps -eo PID,ARGS=CMD |grep $i |awk -F ' ' '{print $1"\t"$2}')
+    #commands+=$txt
+    #commands+='\n'
+    #for j in $(echo $txt| awk -F '\t' '{print $1}')
+    #do
+    #pids+=$j
+    #pids+=" "
+    #done
+    #done
+    #echo $pids
+    #echo $commands
+    #sleep 1
+
+    package=${1:-com.chehejia.car.btphone}
+    adb logcat -v threadtime -v color --pid=$(adb shell ps -ef |grep $package | awk -F ' ' '{print $2}' | head -1)
+}
+
+function alog() {
+    package=${1:-com.chehejia.car.btphone}
+    while true
+    do
+        pid=$(adb shell pidof $package)
+        if [ -n "$pid" ]; then
+            break;
+        else
+            sleep 0.5
+        fi
+    done
+
+    adb logcat -v threadtime -v color --pid=${pid}
+}
+
+func agrep() {
+file=${1}
+cat ${file} |grep -E "checkSyncState|btOnSync|onCarSettingPbapStateChanged|updateBTConnectionState|btSetPbapEnable|getBtConnectionStateChanged|onLoading|doGetAndShowContacts|sendLatestCallLog|triggerSyncCallLog|saveCallLog"
+}
+
+func akill(){
+adb shell killall $1;
+}
+
+function adebuglayout() {
+    adb shell setprop debug.layout true
+    adb shell am start com.android.settings/.DevelopmentSettings
+    adb shell input keyevent 4
+}
+
+function ainput() {
+    adb shell input text ${1:-}
+}
+
+function aclear() {
+    adb shell killall logd logcat
+}
+
+function akill() {
+    package=${1:-com.chehejia.car.btphone}
+    adb shell kill -9 $(adb shell ps -ef |grep ${package} |awk -F ' ' '{print $2}' | head -1)
+}
+
+function ddebuglayout(){
+    adb shell setprop debug.layout false
+    adb shell am start com.android.settings/.DevelopmentSettings
+    adb shell input keyevent 4
+}
+
+function findcmd() {
+    find ${PATH//:/ } -name *${1:=*}*
+}
+
+function ldd() {
+    objdump -p $@ |grep NEEDED | cut -d ' ' -f 18
+}
+
+function proxy() {
+    export http_proxy=socks5h://127.0.0.1:1086
+    export https_proxy=socks5h://127.0.0.1:1086
+}
+
+function unproxy() {
+    unset http_proxy
+    unset https_proxy
+}
+
+function llog() {
+    if [ $1 ]; then
+        process_name=$1
+        shift
+        adb logcat -c && adb logcat $@ --pid=$(adb shell pidof ${process_name}) | tee ${process_name}_$(date "+%Y%m%d_%H%M%S").txt
+    else
+        echo "usage: $0 <package_name> [...]"
+        echo "dump adb logcat"
+    fi
+
+}
