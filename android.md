@@ -200,3 +200,13 @@ java -classpath prebuilts/devtools/tools/lib/manifest-merger.jar com.android.man
 ```
 
 # Qcom Boot Process [https://lineageos.org/engineering/Qualcomm-Firmware/](https://lineageos.org/engineering/Qualcomm-Firmware/)
+
+# aosp kernel make initramfs [https://android.googlesource.com/kernel/build/+/refs/heads/master/build.sh](https://android.googlesource.com/kernel/build/+/refs/heads/master/build.sh)
+
+> [https://android.googlesource.com/kernel/build/+/refs/heads/master/build.sh#508](https://android.googlesource.com/kernel/build/+/refs/heads/master/build.sh#508)
+
+```
+    (cd ${INITRAMFS_STAGING_DIR} && find . | cpio -H newc -o > ${MODULES_STAGING_DIR}/initramfs.cpio)
+    gzip -fc ${MODULES_STAGING_DIR}/initramfs.cpio > ${MODULES_STAGING_DIR}/initramfs.cpio.gz
+    mv ${MODULES_STAGING_DIR}/initramfs.cpio.gz ${DIST_DIR}/initramfs.img
+```
