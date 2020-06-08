@@ -1,0 +1,23 @@
+diff --git a/tools/Android.mk b/tools/Android.mk
+index 7aad241..dc2a22c 100644
+--- a/tools/Android.mk
++++ b/tools/Android.mk
+@@ -52,7 +52,7 @@ EMULATOR_KERNEL_ARCH := $(TARGET_ARCH)
+ EMULATOR_KERNEL_DIST_NAME := kernel-ranchu
+ # Below should be the same as PRODUCT_KERNEL_VERSION set in
+ # device/generic/goldfish/(arm|x86)*-vendor.mk
+-EMULATOR_KERNEL_VERSION := 5.4
++EMULATOR_KERNEL_VERSION := 5.4_LOCAL
+ 
+ # Use 64-bit kernel even for 32-bit Android
+ ifeq ($(TARGET_ARCH), x86)
+diff --git a/x86_64-vendor.mk b/x86_64-vendor.mk
+index 2334fa6..f8c18ae 100644
+--- a/x86_64-vendor.mk
++++ b/x86_64-vendor.mk
+@@ -1,4 +1,4 @@
+-PRODUCT_KERNEL_VERSION := 5.4
++PRODUCT_KERNEL_VERSION := 5.4_LOCAL
+ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+     $(wildcard prebuilts/qemu-kernel/x86_64/$(PRODUCT_KERNEL_VERSION)/ko/*.ko)
+ 
