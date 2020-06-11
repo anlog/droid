@@ -329,7 +329,7 @@
       <module fileurl="file://$PROJECT_DIR$/aosp.iml" filepath="$PROJECT_DIR$/aosp.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="Android API 29 Platform" project-jdk-type="Android SDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false">
     <output url="file:///tmp/intellij/Volumes/src/m01/LINUX/android/classes" />
   </component>
   <component name="VcsDirectoryMappings">
