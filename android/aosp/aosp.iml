@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module relativePaths="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration />
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/frameworks/base/core/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/packages/apps/Nfc/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/packages/apps/Nfc/nci/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/packages/apps/Settings/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/services/usb/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/frameworks/base/services/core/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/out/target/common/obj/JAVA_LIBRARIES/system-api-stubs_intermediates/srcjars" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/frameworks/base/proto/framework-protos/android_common/javac/srcjars" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java_gen_java/gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget-V1.0-java_gen_java/gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java_gen_java/gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java_gen_java/gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java_gen_java/gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/packages/SettingsLib/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/frameworks/base/framework/android_common/gen/aidl/frameworks/base/core/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java_gen_java/gen/srcs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/hardware/custom/interfaces/biometrics/fingerprint/inscreen/1.0/vendor.lineage.biometrics.fingerprint.inscreen-V1.0-java_gen_java/gen/srcs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/frameworks/base/framework-javastream-protos/gen/gensrcs/frameworks/base/core/proto/android/hardware/biometrics" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/frameworks/base/core/res/framework-res/android_common/gen/aapt2/R" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/frameworks/base/framework-javastream-protos/gen/0/frameworks/base/core/proto/android/server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libcore/json/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/frameworks/base/packages/SettingsProvider/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/frameworks/base/packages/SettingsProvider/SettingsProvider/android_common/gen/aapt2/R" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/media/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/frameworks/base/packages/SettingsProvider/SettingsProvider/android_common/gen/logtags/frameworks/base/packages/SettingsProvider/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libcore/luni/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/apps/Bluetooth/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/services/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/packages/SystemUI/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/gen/aapt2/R" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/packages/SystemUI/plugin/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/packages/SystemUI/plugin_core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/packages/SystemUI/shared/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/external/jsr330/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/frameworks/base/graphics/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/.repo" />
       <excludeFolder url="file://$MODULE_DIR$/abi" />
       <excludeFolder url="file://$MODULE_DIR$/android" />
@@ -63,7 +77,7 @@
       <excludeFolder url="file://$MODULE_DIR$/tools" />
       <excludeFolder url="file://$MODULE_DIR$/vendor" />
     </content>
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
   </component>
 </module>
