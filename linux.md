@@ -140,3 +140,19 @@ wg-quick up client
 
 done
 
+## int base in shell
+
+```
+# 0x(16) 0b(2) 
+echo $((0xabc))
+echo $((0b101))
+echo $((16#ef))
+echo $((8#77))
+echo $((2#11110011))
+
+# ibase input base; obse output base
+echo "ibase=10;obase=16;16"
+echo "ibase=10;obase=2;16"
+```
+
+
