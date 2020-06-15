@@ -1,3 +1,14 @@
+# `OutLine`
+
+---
+
+* [android.md](./android.md) for `android` stuff
+* [aosp.md](./aosp.md) for `aosp` things
+* [linux.md](./linux.md) for `linux kernel` stuff
+* [mac.md](./mac.md) for `macos` usage
+
+---
+
 ## droid: 80fixsim: Fake carrier for ROMs with init.d support
 
  - MCC & MNC: http://www.mcc-mnc.com/ & https://wammu.eu/tools/networks/?country=310
