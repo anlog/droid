@@ -41,3 +41,12 @@ emulator
 adb shell cat /proc/version
 ```
 
+## make kernel module outside
+
+> you can follow this `[Makefile](./aosp/Makefile)`
+
+```
+export PATH := $(HOME)/code/master/prebuilts/clang/host/linux-x86/clang-r383902/bin:$(HOME)/code/master/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(PATH)
+
+make -C /home/dp/code/dipper/out/target/product/dipper/obj/KERNEL_OBJ M=/home/dp/code/wg/wireguard-linux-compat/src O=/home/dp/code/wg/wireguard-linux-compat/src/out ARCH=arm64 CC=clang CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-androidkernel- CROSS_COMPILE_ARM32=aarch64-linux-androidkernel- WIREGUARD_VERSION="1.0.20200611-dirty" modules
+```
