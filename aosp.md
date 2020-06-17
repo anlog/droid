@@ -71,3 +71,16 @@ adb forward --list
 ```
 
 > [vscode debug launch.json](./android/aosp/.vscode/launch.json)
+
+## aosp tar output for ide
+
+```
+# for source code you may need
+tar -cf ../dipper.tar.gz frameworks packages libcore hardware bionic  art build bootable dalvik  development device libcore libnativehelper system vendor/aosp vendor/codeaurora vendor/nxp vendor/qcom aosp.iml aosp.ipr
+
+# for generate protobuf or aidl things
+find out/soong -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" -or -path "*gen*/*.srcjar" -not -path "stub" |tar -cavf out.tar.gz -T -
+
+
+tar -xzf out.tar.gz -C dipper
+```
