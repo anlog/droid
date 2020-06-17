@@ -50,3 +50,24 @@ export PATH := $(HOME)/code/master/prebuilts/clang/host/linux-x86/clang-r383902/
 
 make -C /home/dp/code/dipper/out/target/product/dipper/obj/KERNEL_OBJ M=/home/dp/code/wg/wireguard-linux-compat/src O=/home/dp/code/wg/wireguard-linux-compat/src/out ARCH=arm64 CC=clang CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-androidkernel- CROSS_COMPILE_ARM32=aarch64-linux-androidkernel- WIREGUARD_VERSION="1.0.20200611-dirty" modules
 ```
+
+## attach android process with visual studio code
+
+```
+adb forward --list
+
+ adb forward tcp:5005 jdwp:$(adb shell pidof system_server) && jdb -attach localhost:5005
+
+ # use func
+ function aadb() {
+    proc_name=${1:-system_server} # default proc_name to debug
+    port=${2:-5005} # default port to forward
+    forwarded=$(adb forward --list | grep -q "jdwp:${port}" | cut -f 2 -d ' ')
+    [ ${forwarded} ] && adb forward --remove ${forwarded}
+    adb forward tcp:${port} jdwp:$(adb shell pidof ${proc_name}) && jdb -attach localhost:${port}
+}
+
+[funcs for mime](./linux.zsh_func)
+```
+
+> [vscode debug launch.json](./android/aosp/.vscode/launch.json)

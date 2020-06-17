@@ -134,3 +134,11 @@ function llog() {
     fi
 
 }
+
+function aadb() {
+    proc_name=${1:-system_server} # default proc_name to debug
+    port=${2:-5005} # default port to forward
+    forwarded=$(adb forward --list | grep -q "jdwp:${port}" | cut -f 2 -d ' ')
+    [ ${forwarded} ] && adb forward --remove ${forwarded}
+    adb forward tcp:${port} jdwp:$(adb shell pidof ${proc_name}) && jdb -attach localhost:${port} -sourcepath /ifnot/dipper/frameworks/base/core/java
+}
