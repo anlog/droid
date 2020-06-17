@@ -83,4 +83,6 @@ find out/soong -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" -o
 
 
 tar -xzf out.tar.gz -C dipper
+
+find out -name "*.srcjar" -exec unzip -o {} -d out/soong/srcjar \;
 ```
