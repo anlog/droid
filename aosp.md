@@ -95,12 +95,13 @@ func aosp_get_out() {
 
     target=$1/soong/.intermediates
 
+    gen_dir=$(dirname ${target})/gen/
     for i in $(find ${target} -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" ); do
         package_name=$(cat $i | grep "package " | cut -f 2 -d ' ' |cut -f 1 -d ';' )
         package_dir=${package_name//.//}
-        gen_dir=$(dirname ${target})/gen/${package_dir}
-        echo "copying $i -> ${gen_dir}"
-        [ ${package_dir} ] && mkdir -p ${gen_dir} && cp $i ${gen_dir}
+        package_gen_dir=${gen_dir}/${package_dir}
+        echo "copying $i -> ${package_gen_dir}"
+        [ ${package_dir} ] && mkdir -p ${package_gen_dir} && cp $i ${package_gen_dir}
     done
 
     src_jar_dir=$(dirname ${target})/srcjar/
