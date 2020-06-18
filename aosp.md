@@ -81,8 +81,36 @@ tar -cf ../dipper.tar.gz frameworks packages libcore hardware bionic  art build 
 # for generate protobuf or aidl things
 find out/soong -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" -or -path "*gen*/*.srcjar" -not -path "stub" |tar -cavf out.tar.gz -T -
 
-
 tar -xzf out.tar.gz -C dipper
 
+# unzip srcjar to srcjar
 find out -name "*.srcjar" -exec unzip -o {} -d out/soong/srcjar \;
+
+---
+
+# V1: for aosp_get_out from findout
+func aosp_get_out() {
+
+    [ $1 ] || { echo "you must specific the <out> dir" && return 1 }
+
+    target=$1/soong/.intermediates
+
+    for i in $(find ${target} -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" ); do
+        package_name=$(cat $i | grep "package " | cut -f 2 -d ' ' |cut -f 1 -d ';' )
+        package_dir=${package_name//.//}
+        gen_dir=$(dirname ${target})/gen/${package_dir}
+        echo "copying $i -> ${gen_dir}"
+        [ ${package_dir} ] && mkdir -p ${gen_dir} && cp $i ${gen_dir}
+    done
+
+    src_jar_dir=$(dirname ${target})/srcjar/
+    find ${target} -path "*gen*/*.srcjar" -not -path "stub" -exec unzip -o {} -d ${src_jar_dir} \;
+
+    ## then tar them
+    tar -caf out.tar.gz ${gen_dir} ${src_jar_dir} && \
+    echo "create out.tar.gz for ${gen_dir} & ${src_jar_dir} success"
+}
+
+
+
 ```
