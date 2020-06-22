@@ -135,6 +135,14 @@ function llog() {
 
 }
 
+function aosp() {
+    cd /ifnot/dipper
+}
+
+function gotocode() {
+    cd /ifnot/codes
+}
+
 function aadb() {
     proc_name=${1:-system_server} # default proc_name to debug
     port=${2:-5005} # default port to forward
