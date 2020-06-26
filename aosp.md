@@ -79,7 +79,7 @@ adb forward --list
 tar -cf ../dipper.tar.gz frameworks packages libcore hardware bionic  art build bootable dalvik  development device libcore libnativehelper system vendor/aosp vendor/codeaurora vendor/nxp vendor/qcom aosp.iml aosp.ipr
 
 # for generate protobuf or aidl things
-find out/soong -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" -or -path "*gen*/*.srcjar" -not -path "stub" |tar -cavf out.tar.gz -T -
+find out/soong -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" -or -path "*gen*/*.srcjar" -not -path "*stub*" |tar -cavf out.tar.gz -T -
 
 tar -xzf out.tar.gz -C dipper
 
@@ -105,7 +105,7 @@ func aosp_get_out() {
     done
 
     src_jar_dir=$(dirname ${target})/srcjar/
-    find ${target} -path "*gen*/*.srcjar" -not -path "stub" -exec unzip -o {} -d ${src_jar_dir} \;
+    find ${target} -path "*gen*/*.srcjar" -not -path "*stub*" -exec unzip -o {} -d ${src_jar_dir} \;
 
     ## then tar them
     tar -caf out.tar.gz ${gen_dir} ${src_jar_dir} && \
