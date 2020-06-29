@@ -139,8 +139,20 @@ function aosp() {
     cd /ifnot/dipper
 }
 
+function dt() {
+    cd /ifnot/dt
+}
+
 function gotocode() {
     cd /ifnot/codes
+}
+
+function makeaosp(){
+    aosppath=${1:-/ifnot/dt/aosp}
+    export SOONG_GEN_CMAKEFILES=1
+    export SOONG_GEN_CMAKEFILES_DEBUG=1
+    ulimit -S -n 2048
+    cd ${aosppath} && source build/envsetup.sh && lunch aosp_x86_64-userdebug
 }
 
 function aadb() {
