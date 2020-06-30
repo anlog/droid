@@ -6,6 +6,17 @@
 
 ## synchronized & Lock
 
+- volatile
+- synchronized
+- wait/notify/notifyAll
+- JUC:
+    * AtomicXX
+    * ReentrantLock
+    * AQS
+
+
+
+
  * 乐观锁/悲观锁
  * 自旋锁/适应性自旋锁
  * 无锁/偏向锁/轻量级锁/重量级锁
