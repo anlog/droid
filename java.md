@@ -6,6 +6,15 @@
 
 ## synchronized & Lock
 
+> thread goto waiting
+    
+    * Thread.sleep (hold lock)
+    * Thread.yield (hold lock)
+    * Thread.wait (release lock)
+    * LockSupport.pack/unpack (release lock)
+
+> thread sync methords
+
 - volatile
 - synchronized
 - wait/notify/notifyAll
