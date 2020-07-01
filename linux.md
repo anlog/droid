@@ -156,3 +156,47 @@ echo "ibase=10;obase=2;16"
 ```
 
 
+## systemd-timerrs
+
+`systemd-analyze *-*-* 00:00:00`
+
+```
+➜  ~ cat /etc/systemd/system/aosp.timer
+[Unit]
+Description=aosp master build daily
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
+```
+➜  ~ cat /etc/systemd/system/aosp.service
+[Unit]
+Description=aosp master daily build service
+
+[Service]
+Type=oneshot
+User=dp
+ExecStart=/home/dp/code/master/makeaosp.sh
+```
+
+```
+➜  ~ cat code/master/makeaosp.sh
+#!/usr/bin/zsh
+aosppath=/home/dp/code/master
+export SOONG_GEN_CMAKEFILES=1
+export SOONG_GEN_CMAKEFILES_DEBUG=1
+ulimit -S -n 2048
+cd ${aosppath} && repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags && \
+    source build/envsetup.sh && lunch aosp_x86_64-userdebug && m sdk && \
+    curl 'https://oapi.dingtalk.com/robot/send?access_token=xxx' \
+    -H 'Content-Type: application/json' \
+    -d '{"msgtype": "text","text": {"content": "build ok"}, "at": {"isAll": true}}' || \
+    curl 'https://oapi.dingtalk.com/robot/send?access_token=xxx' \
+    -H 'Content-Type: application/json' \
+    -d '{"msgtype": "text","text": {"content": "build failed"}, "at": {"isAll": true}}'
+```
