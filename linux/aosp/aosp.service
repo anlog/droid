@@ -2,6 +2,6 @@
 Description=aosp master daily build service
 
 [Service]
-Type=oneshot
+Type=simple
 User=dp
 ExecStart=/home/dp/code/droid/linux/aosp/makeaosp.sh

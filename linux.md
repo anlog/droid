@@ -159,6 +159,9 @@ echo "ibase=10;obase=2;16"
 
 ## journalctl
 
+**show logs for serviec last active**
+`journalctl _SYSTEMD_INVOCATION_ID=$(systemctl show -p InvocationID --value aosp)`
+
  _show boots_
 `journalctl --list-boots`
 
