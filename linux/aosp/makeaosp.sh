@@ -14,8 +14,14 @@ function tell() {
 }
 
 ## for gen clion CMakefile
+# https://android.googlesource.com/platform/build/soong/+/HEAD/docs/clion.md
 export SOONG_GEN_CMAKEFILES=1
 export SOONG_GEN_CMAKEFILES_DEBUG=1
+
+## for gen compdb
+# https://android.googlesource.com/platform/build/soong/+/HEAD/docs/compdb.md
+export SOONG_GEN_COMPDB=1
+export SOONG_GEN_COMPDB_DEBUG=1
 
 ## for aosp kernel build
 echo "building kernel for aosp at ${kernelpath}"
