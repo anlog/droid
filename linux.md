@@ -155,6 +155,28 @@ echo "ibase=10;obase=16;16"
 echo "ibase=10;obase=2;16"
 ```
 
+---
+
+## journalctl
+
+ _show boots_
+`journalctl --list-boots`
+
+_disk-usage_
+`journalctl --disk-usage`
+
+_log from boot_
+`journalctl --boot`
+
+__log from today__
+`journalctl --since today`
+
+__log for unit__
+`journalctl -au aosp  --since today`
+
+__log for unit with json__
+`journalctl -au aosp  --since today`
+
 
 ## systemd-timerrs
 
