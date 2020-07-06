@@ -9,5 +9,8 @@
         "-pretty",
         "--background-index",
         "--compile-commands-dir=/home/dp/code/master/out/soong/development/ide/compdb"
-    ]
+    ],
+    "search.exclude": {
+        "out": true
+    }
 }

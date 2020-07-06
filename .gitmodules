@@ -1,3 +1,6 @@
 [submodule ".files"]
 	path = .files
 	url = https://github.com/llog/.files
+[submodule "linux/aosp/bpy"]
+	path = linux/aosp/bpy
+	url = https://github.com/anlog/bpy

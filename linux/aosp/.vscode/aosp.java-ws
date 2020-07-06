@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"name": "frameworks_base",
+			"path": "../frameworks/base/core/java"
+		},
+	],
+	"settings": {
+		"C_Cpp.default.browse.path": [],
+		"C_Cpp.intelliSenseEngine": "Disabled",
+		"C_Cpp.autocomplete": "Disabled", // So you don't get autocomplete from both extensions.
+		"C_Cpp.errorSquiggles": "Disabled", // So you don't get error squiggles from both extensions (clangd's seem to be more reliable anyway).
+		"clangd.path": "/usr/bin/clangd-10",
+		"clangd.arguments": [
+			"-log=verbose",
+			"-pretty",
+			"--background-index",
+			"--compile-commands-dir=/home/dp/code/master/out/soong/development/ide/compdb"
+		],
+		"search.exclude": {
+			"out": true
+		},
+		"java.autobuild.enabled": false,
+		"java.import.maven.enabled": false,
+		"java.dependency.autoRefresh": false,
+		"java.dependency.syncWithFolderExplorer": false,
+		"java.home": "/usr/lib/jvm/java-8-openjdk-amd64",
+	}
+}
