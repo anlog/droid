@@ -3,6 +3,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH=$PATH:/Users/dp/Library/Android/sdk/cmdline-tools/latest/tools/bin
 export PATH=$PATH:/Users/dp/Library/Android/sdk/build-tools/29.0.3
+export PATH=$PATH:/usr/local/opt/llvm/bin
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 
