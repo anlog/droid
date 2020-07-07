@@ -225,3 +225,12 @@ cd ${aosppath} && repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle -
     -H 'Content-Type: application/json' \
     -d '{"msgtype": "text","text": {"content": "build failed"}, "at": {"isAll": true}}'
 ```
+
+
+## openssl encrypt/decrypt
+
+```
+cat file | openssl des3 -pbkdf2 > file.encrypted
+cat file.encrypted | openssl des3 -pbkdf2 -d > file.uncrypted
+```
+
