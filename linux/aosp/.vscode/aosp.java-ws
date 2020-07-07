@@ -25,5 +25,11 @@
 		"java.dependency.autoRefresh": false,
 		"java.dependency.syncWithFolderExplorer": false,
 		"java.home": "/usr/lib/jvm/java-8-openjdk-amd64",
-	}
+		"java.codeGeneration.generateComments": true,
+		"java.implementationsCodeLens.enabled": true,
+		"java.import.gradle.enabled": false,
+		"java.import.gradle.wrapper.enabled": false,
+		"java.trace.server": "messages",
+		"java.dependency.showMembers": true,
+	},
 }
