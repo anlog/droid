@@ -1,9 +1,29 @@
 {
 	"folders": [
 		{
-			"name": "frameworks_base",
+			"name": "frameworks_base_core",
 			"path": "../frameworks/base/core/java"
 		},
+		{
+			"name": "frameworks_base_services_core",
+			"path": "../frameworks/base/services/core/java"
+		},
+		{
+			"name": "frameworks_base_services",
+			"path": "../frameworks/base/services/java"
+		},
+		{
+			"name": "ojluni",
+			"path": "../libcore/ojluni/src/main/java"
+		},
+		{
+			"name": "srcjar",
+			"path": "../out/soong/srcjar"
+		},
+		{
+			"name": "srcjar",
+			"path": "../out/soong/gen"
+		}
 	],
 	"settings": {
 		"C_Cpp.default.browse.path": [],
@@ -31,5 +51,5 @@
 		"java.import.gradle.wrapper.enabled": false,
 		"java.trace.server": "messages",
 		"java.dependency.showMembers": true,
-	},
+	}
 }
