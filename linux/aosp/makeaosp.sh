@@ -34,20 +34,26 @@ function makeaosp() {
     cd ${spath} && \
         repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags && \
         source build/envsetup.sh && lunch sdk_phone_x86_64-userdebug && m sdk && \
-        bpy notify "aosp ok" || bpy notify "aosp failed: $(journalctl -a  _SYSTEMD_INVOCATION_ID=$(systemctl show -p InvocationID --value aosp) | tail -10)"
+        mkdir -p out/$(date +%Y%m%d) && \
+        cp -a "out/host/linux-x86/sdk/sdk_phone_x86_64/android-sdk_eng.dp_linux-x86.zip*" out/$(date +%Y%m%d) && \
+        zip out/$(date +%Y%m%d)/compile_commands.json.zip out/soong/development/ide/compdb/compile_commands.json && \
+        zip -qr out/$(date +%Y%m%d)/clion.zip out/development/ide/clion && \
+        cp -a out/verbose.log.gz out/$(date +%Y%m%d) && \
+        journalctl -a  _SYSTEMD_INVOCATION_ID=$(systemctl show -p InvocationID --value aosp) > out/$(date +%Y%m%d)/aosp.build.log && \
+        aosp_take_gen out out/$(date +%Y%m%d) && \
+        bpy upload out/$(date +%Y%m%d) || bpy notify "aosp failed: $(journalctl -a  _SYSTEMD_INVOCATION_ID=$(systemctl show -p InvocationID --value aosp) | tail -10)"
     ulimit -S -n ${oldlimit}
-
-    ## upload logs
 
 }
 
-func aosp_get_out() {
+func aosp_take_gen() {
 
     [ $1 ] || { echo "you must specific the <out> dir" && return 1 }
 
     target=$1/soong/.intermediates
 
     gen_dir=$(dirname ${target})/gen/
+    rmdir ${gen_dir}
     for i in $(find ${target} -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" ); do
         package_name=$(cat $i | grep "package " | cut -f 2 -d ' ' |cut -f 1 -d ';' )
         package_dir=${package_name//.//}
@@ -57,17 +63,13 @@ func aosp_get_out() {
     done
 
     src_jar_dir=$(dirname ${target})/srcjar/
+    rmdir ${src_jar_dir}
     find ${target} -path "*gen*/*.srcjar" -not -path "*stub*" -exec unzip -o {} -d ${src_jar_dir} \;
 
     ## then tar them
-    tar -caf out.tar.gz ${gen_dir} ${src_jar_dir} && \
-    echo "create out.tar.gz for ${gen_dir} & ${src_jar_dir} success"
+    tar -caf ${2:-.}/gen.tar.gz ${gen_dir} ${src_jar_dir} && \
+    echo "create ${2:-.}/gen.tar.gz for ${gen_dir} & ${src_jar_dir} success"
 }
-
-
-## todo for upload
-
-## notify someone
 
 ## main
 # If running interactively, don't do anything
