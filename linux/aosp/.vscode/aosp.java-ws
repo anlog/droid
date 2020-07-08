@@ -13,6 +13,10 @@
 			"path": "../frameworks/base/services/java"
 		},
 		{
+			"name": "luni",
+			"path": "../libcore/luni/src/main/java"
+		},
+		{
 			"name": "ojluni",
 			"path": "../libcore/ojluni/src/main/java"
 		},
@@ -21,7 +25,7 @@
 			"path": "../out/soong/srcjar"
 		},
 		{
-			"name": "srcjar",
+			"name": "gen",
 			"path": "../out/soong/gen"
 		}
 	],
@@ -43,7 +47,7 @@
 		"java.autobuild.enabled": false,
 		"java.import.maven.enabled": false,
 		"java.dependency.autoRefresh": false,
-		"java.dependency.syncWithFolderExplorer": false,
+		"java.dependency.syncWithFolderExplorer": true,
 		"java.home": "/usr/lib/jvm/java-8-openjdk-amd64",
 		"java.codeGeneration.generateComments": true,
 		"java.implementationsCodeLens.enabled": true,
@@ -51,5 +55,6 @@
 		"java.import.gradle.wrapper.enabled": false,
 		"java.trace.server": "messages",
 		"java.dependency.showMembers": true,
+		"java.dependency.packagePresentation": "flat",
 	}
 }
