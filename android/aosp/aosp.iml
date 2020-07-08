@@ -25,6 +25,9 @@
       <sourceFolder url="file://$MODULE_DIR$/external/jsr330/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/frameworks/base/graphics/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/libcore/ojluni/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libcore/dalvik/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libcore/libart/src/main/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.repo" />
       <excludeFolder url="file://$MODULE_DIR$/abi" />
       <excludeFolder url="file://$MODULE_DIR$/android" />
