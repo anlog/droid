@@ -35,10 +35,10 @@ function makeaosp() {
         repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags && \
         source build/envsetup.sh && lunch sdk_phone_x86_64-userdebug && m sdk && \
         mkdir -p out/$(date +%Y%m%d) && \
-        cp -a "out/host/linux-x86/sdk/sdk_phone_x86_64/android-sdk_eng.dp_linux-x86.zip*" out/$(date +%Y%m%d) && \
+        cp out/host/linux-x86/sdk/sdk_phone_x86_64/android-sdk_eng.dp_linux-x86.zip* out/$(date +%Y%m%d) && \
         zip out/$(date +%Y%m%d)/compile_commands.json.zip out/soong/development/ide/compdb/compile_commands.json && \
         zip -qr out/$(date +%Y%m%d)/clion.zip out/development/ide/clion && \
-        cp -a out/verbose.log.gz out/$(date +%Y%m%d) && \
+        cp out/verbose.log.gz out/$(date +%Y%m%d) && \
         journalctl -a  _SYSTEMD_INVOCATION_ID=$(systemctl show -p InvocationID --value aosp) > out/$(date +%Y%m%d)/aosp.build.log && \
         aosp_take_gen out out/$(date +%Y%m%d) && \
         bpy upload out/$(date +%Y%m%d) || bpy notify "aosp failed: $(journalctl -a  _SYSTEMD_INVOCATION_ID=$(systemctl show -p InvocationID --value aosp) | tail -10)"
