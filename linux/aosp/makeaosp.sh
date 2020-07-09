@@ -53,7 +53,7 @@ func aosp_take_gen() {
     target=$1/soong/.intermediates
 
     gen_dir=$(dirname ${target})/gen/
-    rmdir ${gen_dir}
+    rm -rf ${gen_dir}
     for i in $(find ${target} -path "*gen*/*.java" -not -path "*stubs*" -not -path "*R.java" ); do
         package_name=$(cat $i | grep "package " | cut -f 2 -d ' ' |cut -f 1 -d ';' )
         package_dir=${package_name//.//}
@@ -63,7 +63,7 @@ func aosp_take_gen() {
     done
 
     src_jar_dir=$(dirname ${target})/srcjar/
-    rmdir ${src_jar_dir}
+    rm -rf ${src_jar_dir}
     find ${target} -path "*gen*/*.srcjar" -not -path "*stub*" -exec unzip -o {} -d ${src_jar_dir} \;
 
     ## then tar them
