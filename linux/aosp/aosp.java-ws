@@ -55,6 +55,6 @@
 		"java.import.gradle.wrapper.enabled": false,
 		"java.trace.server": "messages",
 		"java.dependency.showMembers": true,
-		"java.dependency.packagePresentation": "flat",
+		"java.dependency.packagePresentation": "flat"
 	}
 }
