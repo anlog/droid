@@ -115,3 +115,7 @@ func aosp_get_out() {
 
 
 ```
+
+## how ibinder object transfered?
+
+`https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/Parcel.cpp;drc=master;l=191`

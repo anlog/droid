@@ -1,6 +1,7 @@
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export PATH=/Users/dp/Library/Android/sdk/platform-tools:$PATH
 export PATH=$PATH:/Users/dp/Library/Android/sdk/cmdline-tools/latest/tools/bin
 export PATH=$PATH:/Users/dp/Library/Android/sdk/build-tools/29.0.3
 export PATH=$PATH:/usr/local/opt/llvm/bin:/ifnot/bpy
