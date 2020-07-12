@@ -162,3 +162,8 @@ function aadb() {
     [ ${forwarded} ] && adb forward --remove ${forwarded}
     adb forward tcp:${port} jdwp:$(adb shell pidof ${proc_name}) && jdb -attach localhost:${port} -sourcepath /ifnot/dipper/frameworks/base/core/java
 }
+
+function fget() {
+    [ $1 ] || { echo "you must specific the <remote_file>" && return 1 }
+    scp -r dp@linux:$1 .
+}
