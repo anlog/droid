@@ -119,3 +119,11 @@ func aosp_get_out() {
 ## how ibinder object transfered?
 
 `https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/Parcel.cpp;drc=master;l=191`
+
+
+## binder
+
+```
+local -> remote(mean driver indeed)
+binder -> IXX.Stub.Proxy.transact -> BinderProxy.transact -> android_utils_Binder.cpp::android_os_BinderProxy_transact -> BpBinder.cpp::transact -> IPCThreadState::transact
+```
