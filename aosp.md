@@ -127,3 +127,11 @@ func aosp_get_out() {
 local -> remote(mean driver indeed)
 binder -> IXX.Stub.Proxy.transact -> BinderProxy.transact -> android_utils_Binder.cpp::android_os_BinderProxy_transact -> BpBinder.cpp::transact -> IPCThreadState::transact
 ```
+
+## wireshark with android
+
+```
+M01_AE:/data # tcpdump -n -i usb0 -s 0 -w - | toybox nc -l -p 12345
+打开另外一个窗口，运行下面的命令：
+D:\temp>adb forward tcp:23456 tcp:12345 && nc 127.0.0.1 23456 | "C:\Program Files\Wireshark\Wireshark.exe" -k -S -i -
+```
